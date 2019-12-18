@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Content/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Picture系统</h1>
+        <div class="form-group">
+            <label for="inputNum">请输入图片序号：</label>
+            <input value="" id="inputNum"><button class="btn btn-primary continue">确定</button>
+        </div>
+        <img src="https://dss0.bdstatic.com/l4oZeXSm1A5BphGlnYG/skin/89.jpg" class="img-responsive pic" />
+        <div class=" container-fluid row page-header">
+            <button class="btn btn-primary btn-lg pull-left prev">上一张</button>
+            <button class="btn btn-primary btn-lg pull-right next">下一章</button>
+        </div>
+        <script type="text/javascript">
+            var picAddress = "https://dss0.bdstatic.com/l4oZeXSm1A5BphGlnYG/skin/";
+            var img = $("img");
+            var count = 1;
+
+            $(".prev").on("click",
+                function (parameters) {
+                    count--;
+                    if (count >= 1) {
+                        $("#inputNum").val(count);
+                        img.attr("src", picAddress + count + ".jpg");
+                    }
+
+                });
+
+            $(".next").on("click",
+                function (parameters) {
+                    count++;
+                    $("#inputNum").val(count);
+                    img.attr("src", picAddress + count + ".jpg");
+                });
+            $(".continue").on("click",
+                function (parameters) {
+                    var inputNum = $("#inputNum").val();
+                    $("#inputNum").val(inputNum);
+                    count = inputNum;
+                    img.attr("src", picAddress + inputNum + ".jpg");
+                });
+
+        </script>
+        <hr />
+        <footer>
+            <p>&copy; 版权所有，侵权必究</p>
+        </footer>
+    </div>
+</body>
+</html>
